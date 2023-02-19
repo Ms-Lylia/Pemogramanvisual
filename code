@@ -1,0 +1,77 @@
+Public Class Form1
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cmbjenis.Items.Add("Seafood") 'Terdapat 3 submenu yang '
+        cmbjenis.Items.Add("Ayam")
+        cmbjenis.Items.Add("Minum")
+    End Sub
+
+    Private Sub cmbjenis_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbjenis.SelectedIndexChanged
+        If cmbjenis.Text = "Seafood" Then 'condisi dimana jika jenis seafood yang dipilih makan akan muncul menu seafood'
+            cmbnama.Items.Clear()
+            cmbnama.Text = ""
+            cmbnama.Items.Add("Kepiting")
+            cmbnama.Items.Add("Cumi-Cumi")
+            cmbnama.Items.Add("Kerang")
+            cmbnama.Items.Add("Lobster")
+
+        ElseIf cmbjenis.Text = "Ayam" Then 'jika pilih ayam akan muncul menu ayam'
+            cmbnama.Items.Clear()
+            cmbnama.Text = ""
+            cmbnama.Items.Add("Ayam Asam Manis")
+            cmbnama.Items.Add("Ayam Bakar")
+            cmbnama.Items.Add("Ayam Goreng")
+            cmbnama.Items.Add("Ayam Saos Tiram")
+
+        ElseIf cmbjenis.Text = "Minum" Then 'jika pilih menu minuman akan di tampilkan menu minuman' 
+            cmbnama.Items.Clear()
+            cmbnama.Text = ""
+            cmbnama.Items.Add("Es/Panas Teh")
+            cmbnama.Items.Add("Es/Panas LemonTea")
+            cmbnama.Items.Add("Es/Panas Jeruk")
+            cmbnama.Items.Add("Coca - cola")
+        End If
+    End Sub
+
+    Private Sub cmbnama_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbnama.SelectedIndexChanged
+        If cmbnama.Text = "Kepiting" Then 'jika kepiting yang di pilih makan harga yg akan muncul 60.000'
+            txtharga.Text = 60000
+        ElseIf cmbnama.Text = "Cumi - Cumi" Then 'jika cumi-cumi yang di pilih makan harga yg akan muncul 70.000'
+            txtharga.Text = 70000
+        ElseIf cmbnama.Text = "Kerang" Then 'jika kerang yang di pilih makan harga yg akan muncul 80.000'
+            txtharga.Text = 80000
+        ElseIf cmbnama.Text = "Lobster" Then 'jika lobster yang di pilih makan harga yg akan muncul 75.000'
+            txtharga.Text = 75000
+        ElseIf cmbnama.Text = "Ayam Asam Manis" Then 'jika Ayam asam manis yang di pilih makan harga yg akan muncul 65.000'
+            txtharga.Text = 65000
+        ElseIf cmbnama.Text = "Ayam Bakar" Then
+            txtharga.Text = 55000
+        ElseIf cmbnama.Text = "Ayam goreng" Then
+            txtharga.Text = 20000
+        ElseIf cmbnama.Text = "Ayam Saos Tiram" Then
+            txtharga.Text = 54000
+        ElseIf cmbnama.Text = "Es/Panas Teh" Then
+            txtharga.Text = 8000
+        ElseIf cmbnama.Text = "Es/Panas Lemontea" Then
+            txtharga.Text = 10000
+        ElseIf cmbnama.Text = "Es/Panas Jeruk" Then
+            txtharga.Text = 12000
+        ElseIf cmbnama.Text = "Coca-cola" Then
+            txtharga.Text = 9000
+        End If
+    End Sub
+
+    Private Sub btnhitung_Click(sender As Object, e As EventArgs) Handles btnhitung.Click
+        txttotal.Text = Val(txtharga.Text) * Val(txtjumlah.Text) 'menghitung total yaitu harga * dengan jumlah makanan yg di pesan'
+        If txttotal.Text > 300000 Then 'terdapat diskon jika pembelian nominal di atas 300.0000'
+            txtpotongan.Text = 50000 'akan mendapatkan potongan 50.000'
+        Else
+            txtpotongan.Text = 0 'jika tidak maka tidak akan mendapatkana potongan'
+        End If
+
+        txtbayar.Text = Val(txttotal.Text) - Val(txtpotongan.Text)
+    End Sub
+
+    Private Sub btnbatal_Click(sender As Object, e As EventArgs) Handles btnbatal.Click
+        End
+    End Sub
+End Class
